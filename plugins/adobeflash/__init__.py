@@ -16,11 +16,14 @@ def hello():
 def run():
     site = open('test/adobeflash.html', 'r')
     content = site.read()
-    winex = r'Flash Player\xa0([\d\.]+) \(Windows und Mac\)'
+    regex = r'Flash Player\xa0([\d\.]+) \(Windows und Mac\)'
+    match = re.search(regex, content)
 #   linex = r'Flash Player\xa0([\d\.]+) \(Linux\)'
-    win_match = re.search(winex, content)
-#    linux_match = re.search(linex, content)
-    if win_match:
-        win_version = win_match.group(1)
+#   linux_match = re.search(linex, content)
 #    if linux_match:
 #       linux_version = linux_match.group(1)
+    if match:
+        return(match.group(1))
+    return None
+
+
